@@ -1,0 +1,113 @@
+import { useState, useEffect } from "react";
+import Time from "../../func/Time"
+import axios from "axios"
+function Sessions() {
+    //     const [datas , setDatas] = useState ({
+        // })
+
+
+
+//   const go = async () => {
+//     let pos = await axios({
+//         method:"post",
+//         url:"api/grade/add",
+//         data:datas
+
+//     })
+
+//   }
+
+//     const ho = (event) => {
+
+
+//         setDatas({
+//             ...datas,
+//             [event.target.name]: event.target.value,
+//         });
+//     };
+
+const [formData, setFormData] = useState({
+    name: "",
+    hours: "",
+    minutes: "",
+    am: "",
+    period: "",
+    day :"SAT", //SUN
+    gradeId:"" // in select
+});
+
+const [grades, setgrades] = useState([{
+    id:0,
+    name:""
+}])
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await axios.get('/api/grade');
+            setgrades(response.data);
+        }
+        fetchData();
+    }, []);
+    console.log(grades) 
+
+
+    const sendData = () => {
+        var startTime = Time.TimeToSecond(formData.hours, formData.minutes, formData.am)
+        var period = Time.TimeToSecond(formData.hours, formData.minutes, "AM")
+        console.log(formData);
+        AddSession(
+            {
+                name: formData.name,
+                startTime: startTime,
+                period: period,
+                day: formData.day,
+                gradeId:formData.gradeId
+    });
+    }
+
+    async function AddSession(data) {
+         var response = await axios({
+            method: 'post',
+            url: 'api/Session',
+            data: data
+         })
+        if (response.status == 200) {
+            console.log("added")
+        } else console.log(response.error)
+    }
+
+    const handleChange = (event) => {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value,
+        });
+    }; 
+    
+    return (
+        <div>
+            
+            <input type="text" placeholder="name" name="name" value={formData.name} onChange={handleChange} />
+            <input type="number" placeholder="H" name="hours" value={formData.hours} onChange={handleChange} />
+            <input type="number" placeholder="M" name="minutes" value={formData.minutes} onChange={handleChange} />
+            <input type="text" placeholder="AM" name="am" value={formData.am} onChange={handleChange} />
+            <input type="number" placeholder="Period" name="period" value={formData.period} onChange={handleChange} />
+            <button onClick={sendData}>Send</button>
+            <br />
+            {/* <input type="text" name="name" value={datas.value} onChange={ho}/>
+            <button onClick={go}>Go</button> */}
+           
+           <select    onChange={handleChange}  name="gradeId">
+        <option >Select a grade</option>
+        {grades.map((grade) => (
+          <option key={grade.id}     value={grade.id}>
+            {grade.name}
+          </option>
+        ))}
+      </select>
+        </div>
+    );
+        }
+
+export default Sessions;
+
+

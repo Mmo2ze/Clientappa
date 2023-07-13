@@ -1,0 +1,27 @@
+
+.cont{
+    min-height: 35%;
+    margin-top: 7px;
+    margin-bottom: 70px;
+}
+
+.cont th,
+.cont td{
+    color: white;
+}
+@media (max-width:990px){
+    .cont{
+        max-height: 600px;
+    }
+}
+.see_moer{
+    color: white;
+    position: absolute;
+    right: 0;
+}
+
+
+.login{
+    color:red;
+    font-size:80px;
+}

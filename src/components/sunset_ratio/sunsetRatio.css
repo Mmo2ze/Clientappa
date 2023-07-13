@@ -1,0 +1,16 @@
+
+.rate{
+    flex: 6;
+    position: relative;
+
+
+}
+
+
+.rate h3{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 20px;
+    letter-spacing: 1.1px;
+}

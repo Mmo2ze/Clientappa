@@ -1,0 +1,157 @@
+/* 1F2A37 */
+.page-sidebar{
+    position: relative;
+}
+.hom{
+    padding-left: 50px;
+}
+.sidebar{
+    background-color: #1F2A37;
+    height: calc(100vh - 64px);
+    padding: 15px 10px;
+    flex: 1;
+    position: relative;
+}
+
+.sidebar ul{
+    
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar ul li div{
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+    
+
+}
+
+.tow{
+    background-color: #374151;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar ul li div span{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #9CA3AF;
+  }
+
+.student_info{
+    color: red;
+    flex-direction: column;
+}
+.student_info p {
+    margin-bottom: 10px;
+    color:white;
+    font-size:14px;
+    margin-bottom:25px;
+    cursor: pointer;
+}
+
+.colse{
+    position: absolute;
+    background-color: red;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    right: -40px;
+    z-index: 999;
+    padding: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+}
+.open{
+    position: fixed;
+    background-color: #175da7;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    z-index: 999;
+    padding: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.open button {
+    background-color: transparent;
+    border: none;
+   font-size: 24px;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+.open button svg {
+    width: 100%;
+    height: 100%;
+}
+
+.opents .open button svg line {
+    stroke: #fff;
+    stroke-width: 3;
+    transition: stroke 0.2s ease-in-out;
+}
+
+.opents .open button:hover svg line {
+    stroke: #dc3545;
+}
+
+.opents .open button:focus-visible svg line {
+    stroke: #dc3545;
+}
+
+.opents .open button svg line:nth-of-type(1) {
+    transform: rotate(45deg);
+}
+
+.opents .open button svg line:nth-of-type(2) {
+    transform: rotate(-45deg);
+}
+
+@media (max-width:720px){
+    .page-sidebar{
+  display: none;
+    }
+    /* .colse{
+        display: block !important;
+    } */
+}
+
+@media (min-width:720px){
+.open{
+    display: none;
+}
+}
+ .sidebarcol{
+    position: relative;
+       left: 0;
+}
+.opents {
+    display: block;
+  }
